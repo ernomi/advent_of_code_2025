@@ -7,6 +7,7 @@ class Dial
 private:
     int m_number;
     int m_result;
+    int m_version;
 public:
     Dial(int startPos);
     ~Dial() = default;
@@ -16,6 +17,8 @@ public:
     void dialLeft(int amount);
 
     int getResult() { return m_result; }
+
+    void setVersion(int version);
 
 };
 

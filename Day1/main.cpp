@@ -6,13 +6,29 @@ int main(int argc, char **argv)
 {
     if (argc != 2)
     {
-        std::cout << "Provide a text file to read\n";
+        std::cout << "Provide a text file to read.\n";
+        return (1);
+    }
+
+    std::ifstream file(argv[1]);
+    if (!file.is_open())
+    {
+        std::cout << "Failed to open file.\n";
+        return (1);
+    }
+
+    int choice;
+    std::cout << "Enter '1' for first half or '2' for second half: ";
+    std::cin >> choice;
+    if (choice != 1 && choice != 2)
+    {
+        std::cout << "No.\n";
         return (1);
     }
 
     Dial passCodeDial(50);
+    passCodeDial.setVersion(choice);
 
-    std::ifstream file(argv[1]);
     std::string line;
 
     while (std::getline(file, line))
